@@ -9,24 +9,29 @@ $(document).ready(function() {
         $("#listado-superheroes").html("")
         $("#alert-error").addClass("d-none")
         let busqueda = $("#txt-busqueda").val()
-        let url = `https://superheroapi.com/api.php/548794004117088/search/${busqueda}`
+        let url = `https://superheroapi1.com/api.php/10225832066284806/search/${busqueda}`
 
         //Opción 1 para esperar que termine de ejecutar la petición
         // let respuesta = peticiones(url)
         // respuesta.then((data) => console.log(data))
 
         //Opción 2 para esperar que termine de ejecutar la petición
-        let respuesta = await peticiones(url)
+        try {
+            let respuesta = await peticiones(url)    
+        } catch (error) {
+            alert("Ha ocurrido un error")
+        }
+        
 
 
         if(respuesta.response === 'error') {
             return $("#alert-error").removeClass("d-none")
         }
 
-
+        
         respuesta.results.forEach(element => {
             let raza = element.appearance.race === 'null' ? 'No definido' : element.appearance.race
-            console.log(element.appearance.height)
+            console.log(element.appearance.height);
             let [,altura] = element.appearance.height
             $("#listado-superheroes").append(`
                 <div class="col-12 col-sm-6 col-lg-4 pb-3">
