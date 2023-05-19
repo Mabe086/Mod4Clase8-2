@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 
         if(respuesta.response === 'error') {
-            return $("#alert-error").removeClass("d-none")
+            return $("#alert-error").removeClass("d-none")//
         }
 
         

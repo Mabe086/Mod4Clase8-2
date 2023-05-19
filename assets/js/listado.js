@@ -42,7 +42,7 @@ $(document).ready(function(){
     })
 
     function mostrarListado(listado) {
-        $("#listado-rango").html("")
+        $("#listado-rango").html("") //
         listado.forEach(element => {
             let raza = element.appearance.race === 'null' ? 'No definido' : element.appearance.race
             let [,altura] = element.appearance.height
